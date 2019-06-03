@@ -1,6 +1,7 @@
 package com.laserbotlabs.securitylibrary.util
 
 import com.laserbotlabs.securitylibrary.R
+import kotlin.random.Random
 
 class Utils {
     companion object {
@@ -14,8 +15,8 @@ class Utils {
             colors.add(R.color.yellow)
             colors.add(R.color.purple)
             colors.add(R.color.teal)
-            val randomNumber = (Math.random() * ((0 - colors.size) + 1)) + colors.size
-            return colors.get(randomNumber.toInt())
+            val randomNumber = Random.nextInt(colors.size);
+            return colors.get(randomNumber)
         }
     }
 }

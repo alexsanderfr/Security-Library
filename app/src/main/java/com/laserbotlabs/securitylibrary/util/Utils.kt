@@ -15,8 +15,8 @@ class Utils {
             colors.add(R.color.yellow)
             colors.add(R.color.purple)
             colors.add(R.color.teal)
-            val randomNumber = Random.nextInt(colors.size);
-            return colors.get(randomNumber)
+            val randomNumber = Random.nextInt(colors.size)
+            return colors[randomNumber]
         }
     }
 }

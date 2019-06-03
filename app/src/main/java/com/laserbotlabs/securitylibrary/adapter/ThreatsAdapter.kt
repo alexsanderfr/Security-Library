@@ -32,7 +32,7 @@ class ThreatsAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val threat: Threat = threats.get(position)
+        val threat: Threat = threats[position]
         val name = threat.name
         holder.itemTextView.text = name
         holder.itemImageView.contentDescription = name

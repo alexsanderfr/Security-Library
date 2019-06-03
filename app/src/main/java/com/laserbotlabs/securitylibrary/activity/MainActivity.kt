@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         transaction.commit()
     }
 
-    fun createFragment(): ThreatsFragment {
+    private fun createFragment(): ThreatsFragment {
         return ThreatsFragment()
     }
 }

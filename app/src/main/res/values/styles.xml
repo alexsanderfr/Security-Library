@@ -8,4 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ToolBarStyle" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/textIcons</item>
+        <item name="android:textColorPrimary">@color/textIcons</item>
+        <item name="android:textColorSecondary">@color/textIcons</item>
+        <item name="actionMenuTextColor">@color/textIcons</item>
+    </style>
 </resources>

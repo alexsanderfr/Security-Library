@@ -10,7 +10,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.laserbotlabs.securitylibrary.R
 import com.laserbotlabs.securitylibrary.model.Threat
-import com.laserbotlabs.securitylibrary.util.Utils
 
 
 class ThreatsAdapter(
@@ -38,7 +37,7 @@ class ThreatsAdapter(
         holder.itemImageView.contentDescription = name
         holder.itemImageView.setImageResource(R.drawable.ic_bug)
         holder.itemImageView.setColorFilter(
-            ContextCompat.getColor(context, Utils.getRandomColor()),
+            ContextCompat.getColor(context, threat.imageResource),
             android.graphics.PorterDuff.Mode.SRC_IN
         )
         holder.starImageView.visibility = if (threat.canBeTested) View.VISIBLE else View.GONE

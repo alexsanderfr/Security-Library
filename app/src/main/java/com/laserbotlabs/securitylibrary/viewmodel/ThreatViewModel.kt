@@ -4,6 +4,7 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import com.laserbotlabs.securitylibrary.model.Threat
+import com.laserbotlabs.securitylibrary.util.Utils
 
 
 class ThreatViewModel : ViewModel() {
@@ -24,7 +25,7 @@ class ThreatViewModel : ViewModel() {
             val description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod " +
                     "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud " +
                     "exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-            val threat = Threat(name, description, x % 3 == 0)
+            val threat = Threat(name, description, x % 3 == 0, Utils.getRandomColor())
             threatsArrayList.add(threat)
         }
         threats.value = threatsArrayList

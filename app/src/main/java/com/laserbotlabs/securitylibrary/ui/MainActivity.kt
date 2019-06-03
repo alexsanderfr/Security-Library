@@ -1,7 +1,8 @@
-package com.laserbotlabs.securitylibrary
+package com.laserbotlabs.securitylibrary.ui
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.laserbotlabs.securitylibrary.R
 
 class MainActivity : AppCompatActivity() {
 

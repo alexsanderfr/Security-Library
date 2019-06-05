@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.laserbotlabs.securitylibrary.R
 import com.laserbotlabs.securitylibrary.model.Threat
+import kotlinx.android.synthetic.main.threat_list_item.view.*
 
 
 class ThreatsAdapter(
@@ -48,9 +49,9 @@ class ThreatsAdapter(
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
-        val itemTextView: TextView = itemView.findViewById(R.id.item_tv)
-        val itemImageView: ImageView = itemView.findViewById(R.id.item_iv)
-        val starImageView: ImageView = itemView.findViewById(R.id.star_iv)
+        val itemTextView: TextView = itemView.item_tv
+        val itemImageView: ImageView = itemView.item_iv
+        val starImageView: ImageView = itemView.star_iv
 
         init {
             itemView.setOnClickListener(this)

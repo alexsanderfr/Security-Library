@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/threatsFragment">
+
+    <fragment
+        android:id="@+id/threatsFragment"
+        android:name="com.laserbotlabs.securitylibrary.fragment.ThreatsFragment"
+        android:label="fragment_threats"
+        tools:layout="@layout/fragment_threats">
+        <action
+            android:id="@+id/action_threatsFragment_to_threatDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/threatDetailFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/threatDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/threatDetailFragment"
+        android:name="com.laserbotlabs.securitylibrary.fragment.ThreatDetailFragment"
+        android:label="fragment_threat_detail"
+        tools:layout="@layout/fragment_threat_detail" >
+        <argument
+            android:name="position"
+            app:argType="integer" />
+    </fragment>
+</navigation>

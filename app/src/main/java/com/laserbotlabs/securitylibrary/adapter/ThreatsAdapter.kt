@@ -1,28 +1,26 @@
 package com.laserbotlabs.securitylibrary.adapter
 
 import android.content.Context
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.laserbotlabs.securitylibrary.R
 import com.laserbotlabs.securitylibrary.model.Threat
+import com.laserbotlabs.securitylibrary.util.Utils.Companion.EXTRA_INT
 import kotlinx.android.synthetic.main.threat_list_item.view.*
 
 
 class ThreatsAdapter(
     private val context: Context,
-    private val threats: List<Threat>,
-    private val mClickHandler: ThreatsAdapterOnClickHandler
+    private val threats: List<Threat>
 ) :
     RecyclerView.Adapter<ThreatsAdapter.ViewHolder>() {
-
-    interface ThreatsAdapterOnClickHandler {
-        fun onClick(position: Int)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -59,7 +57,8 @@ class ThreatsAdapter(
 
         override fun onClick(v: View) {
             val adapterPosition = adapterPosition
-            mClickHandler.onClick(adapterPosition)
+            val bundle = bundleOf(EXTRA_INT to adapterPosition)
+            v.findNavController().navigate(R.id.action_threatsFragment_to_threatDetailFragment, bundle)
         }
     }
 }

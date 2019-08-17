@@ -5,6 +5,8 @@ import kotlin.random.Random
 
 class Utils {
     companion object {
+        const val EXTRA_INT = "com.laserbotlabs.securitylibrary.INT"
+
         fun getRandomColor(): Int {
             val colors: ArrayList<Int> = ArrayList()
             colors.add(R.color.red)

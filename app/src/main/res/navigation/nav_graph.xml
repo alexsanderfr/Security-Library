@@ -3,29 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/threatsFragment">
+    app:startDestination="@id/listFragment">
 
     <fragment
-        android:id="@+id/threatsFragment"
-        android:name="com.laserbotlabs.securitylibrary.fragment.ThreatsFragment"
-        android:label="fragment_threats"
-        tools:layout="@layout/fragment_threats">
+        android:id="@+id/listFragment"
+        android:name="com.laserbotlabs.securitylibrary.fragment.ListFragment"
+        android:label="@string/list"
+        tools:layout="@layout/fragment_list">
         <action
-            android:id="@+id/action_threatsFragment_to_threatDetailFragment"
+            android:id="@+id/action_listFragment_to_detailFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:popUpTo="@+id/threatDetailFragment"
+            app:popUpTo="@+id/detailFragment"
             app:popUpToInclusive="true"
-            app:destination="@id/threatDetailFragment" />
+            app:destination="@id/detailFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/threatDetailFragment"
-        android:name="com.laserbotlabs.securitylibrary.fragment.ThreatDetailFragment"
-        android:label="fragment_threat_detail"
-        tools:layout="@layout/fragment_threat_detail" >
+        android:id="@+id/detailFragment"
+        android:name="com.laserbotlabs.securitylibrary.fragment.DetailFragment"
+        android:label="@string/detail"
+        tools:layout="@layout/fragment_detail" >
         <argument
             android:name="position"
             app:argType="integer" />

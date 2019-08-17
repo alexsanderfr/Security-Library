@@ -12,14 +12,19 @@ import com.laserbotlabs.securitylibrary.R
 import com.laserbotlabs.securitylibrary.model.Threat
 import com.laserbotlabs.securitylibrary.util.Utils.Companion.EXTRA_INT
 import com.laserbotlabs.securitylibrary.viewmodel.ThreatViewModel
-import kotlinx.android.synthetic.main.fragment_threat_detail.*
+import kotlinx.android.synthetic.main.fragment_detail.*
 
-class ThreatDetailFragment : Fragment() {
+class DetailFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        loadThreats()
+        return inflater.inflate(R.layout.fragment_detail, container, false)
+    }
+
+    fun loadThreats() {
         val model = ViewModelProviders.of(this).get(ThreatViewModel::class.java)
         model.getThreats().observe(this, Observer<List<Threat>> { threats ->
             val position = arguments?.getInt(EXTRA_INT, 0)
@@ -35,6 +40,5 @@ class ThreatDetailFragment : Fragment() {
                 if (threat.canBeTested) play_fab.show() else play_fab.hide()
             }
         })
-        return inflater.inflate(R.layout.fragment_threat_detail, container, false)
     }
 }

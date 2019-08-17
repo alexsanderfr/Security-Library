@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.laserbotlabs.securitylibrary.R
 import com.laserbotlabs.securitylibrary.model.Threat
 import com.laserbotlabs.securitylibrary.util.Utils.Companion.EXTRA_INT
-import kotlinx.android.synthetic.main.threat_list_item.view.*
+import kotlinx.android.synthetic.main.list_item.view.*
 
 
 class ThreatsAdapter(
@@ -24,7 +24,7 @@ class ThreatsAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val layoutIdForListItem = R.layout.threat_list_item
+        val layoutIdForListItem = R.layout.list_item
         val view = inflater.inflate(layoutIdForListItem, parent, false)
         return ViewHolder(view)
     }
@@ -58,7 +58,7 @@ class ThreatsAdapter(
         override fun onClick(v: View) {
             val adapterPosition = adapterPosition
             val bundle = bundleOf(EXTRA_INT to adapterPosition)
-            v.findNavController().navigate(R.id.action_threatsFragment_to_threatDetailFragment, bundle)
+            v.findNavController().navigate(R.id.action_listFragment_to_detailFragment, bundle)
         }
     }
 }

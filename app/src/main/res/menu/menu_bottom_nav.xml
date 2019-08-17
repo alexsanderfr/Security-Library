@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/threatMenuItem"
+        android:enabled="true"
+        android:icon="@drawable/ic_bug"
+        android:title="@string/threat"
+        app:showAsAction="ifRoom|withText" />
+
+    <item
+        android:id="@+id/vulnerabilityMenuItem"
+        android:enabled="true"
+        android:icon="@drawable/ic_bug"
+        android:title="@string/vulnerability"
+        app:showAsAction="ifRoom|withText" />
+
+    <item
+        android:id="@+id/securityResourceMenuItem"
+        android:enabled="true"
+        android:icon="@drawable/ic_bug"
+        android:title="@string/resource"
+        app:showAsAction="ifRoom|withText" />
+
+</menu>

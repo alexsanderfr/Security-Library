@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.os.bundleOf
+import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -16,35 +17,42 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         val navController = findNavController(R.id.nav_host_fragment)
+
         val appBarConfiguration = AppBarConfiguration(navController.graph)
-        findViewById<Toolbar>(R.id.toolbar).setupWithNavController(navController, appBarConfiguration)
+        findViewById<Toolbar>(R.id.toolbar).setupWithNavController(
+            navController,
+            appBarConfiguration
+        )
+
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
-        val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.threatMenuItem -> {
-                    val bundle = bundleOf(Utils.EXTRA_INT to 0)
-                    navController.navigate(R.id.listFragment, bundle)
-                    return@OnNavigationItemSelectedListener true
+        val onNavigationItemSelectedListener =
+            BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
+                //TODO: Fix UI not updating
+                when (menuItem.itemId) {
+                    R.id.threatMenuItem -> {
+                        val bundle = bundleOf(Utils.EXTRA_INT to 0)
+                        navController.navigate(R.id.listFragment, bundle)
+                        return@OnNavigationItemSelectedListener true
+                    }
+                    R.id.vulnerabilityMenuItem -> {
+                        val bundle = bundleOf(Utils.EXTRA_INT to 1)
+                        navController.navigate(R.id.listFragment, bundle)
+                        return@OnNavigationItemSelectedListener true
+                    }
+                    R.id.resourceMenuItem -> {
+                        val bundle = bundleOf(Utils.EXTRA_INT to 2)
+                        navController.navigate(R.id.listFragment, bundle)
+                        return@OnNavigationItemSelectedListener true
+                    }
                 }
-                R.id.vulnerabilityMenuItem -> {
-                    val bundle = bundleOf(Utils.EXTRA_INT to 1)
-                    navController.navigate(R.id.listFragment, bundle)
-                    return@OnNavigationItemSelectedListener true
-                }
-                R.id.securityResourceMenuItem -> {
-                    val bundle = bundleOf(Utils.EXTRA_INT to 2)
-                    navController.navigate(R.id.listFragment, bundle)
-                    return@OnNavigationItemSelectedListener true
-                }
+                false
             }
-            false
-        }
         bottomNavigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 
-        val bundle = bundleOf(Utils.EXTRA_INT to 0)
-        navController.navigate(R.id.listFragment, bundle)
+        val navOptions = NavOptions.Builder().setPopUpTo(R.id.listFragment, true).build()
+        navController.navigate(R.id.listFragment, bundleOf(Utils.EXTRA_INT to 0), navOptions)
+
     }
 }

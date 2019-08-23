@@ -35,7 +35,7 @@ class ResourcesAdapter(
         val name = resource.name
         holder.itemTextView.text = name
         holder.itemImageView.contentDescription = name
-        holder.itemImageView.setImageResource(R.drawable.ic_bug)
+        holder.itemImageView.setImageResource(R.drawable.ic_resource)
         holder.itemImageView.setColorFilter(
             ContextCompat.getColor(context, resource.imageResource),
             android.graphics.PorterDuff.Mode.SRC_IN

@@ -35,7 +35,7 @@ class ThreatsAdapter(
         val name = threat.name
         holder.itemTextView.text = name
         holder.itemImageView.contentDescription = name
-        holder.itemImageView.setImageResource(R.drawable.ic_bug)
+        holder.itemImageView.setImageResource(R.drawable.ic_threat)
         holder.itemImageView.setColorFilter(
             ContextCompat.getColor(context, threat.imageResource),
             android.graphics.PorterDuff.Mode.SRC_IN

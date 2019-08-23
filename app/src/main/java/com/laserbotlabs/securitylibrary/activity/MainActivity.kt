@@ -27,21 +27,23 @@ class MainActivity : AppCompatActivity() {
 
         val onNavigationItemSelectedListener =
             BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
-                when (menuItem.itemId) {
-                    R.id.threatMenuItem -> {
-                        val bundle = bundleOf(Utils.EXTRA_INT to 0)
-                        navController.navigate(R.id.listFragment, bundle)
-                        return@OnNavigationItemSelectedListener true
-                    }
-                    R.id.vulnerabilityMenuItem -> {
-                        val bundle = bundleOf(Utils.EXTRA_INT to 1)
-                        navController.navigate(R.id.listFragment, bundle)
-                        return@OnNavigationItemSelectedListener true
-                    }
-                    R.id.resourceMenuItem -> {
-                        val bundle = bundleOf(Utils.EXTRA_INT to 2)
-                        navController.navigate(R.id.listFragment, bundle)
-                        return@OnNavigationItemSelectedListener true
+                if (!menuItem.isChecked) {
+                    when (menuItem.itemId) {
+                        R.id.threatMenuItem -> {
+                            val bundle = bundleOf(Utils.EXTRA_INT to 0)
+                            navController.navigate(R.id.listFragment, bundle)
+                            return@OnNavigationItemSelectedListener true
+                        }
+                        R.id.vulnerabilityMenuItem -> {
+                            val bundle = bundleOf(Utils.EXTRA_INT to 1)
+                            navController.navigate(R.id.listFragment, bundle)
+                            return@OnNavigationItemSelectedListener true
+                        }
+                        R.id.resourceMenuItem -> {
+                            val bundle = bundleOf(Utils.EXTRA_INT to 2)
+                            navController.navigate(R.id.listFragment, bundle)
+                            return@OnNavigationItemSelectedListener true
+                        }
                     }
                 }
                 false

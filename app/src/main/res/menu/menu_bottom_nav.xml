@@ -5,21 +5,21 @@
     <item
         android:id="@+id/threatMenuItem"
         android:enabled="true"
-        android:icon="@drawable/ic_bug"
+        android:icon="@drawable/ic_threat"
         android:title="@string/threat"
         app:showAsAction="ifRoom|withText" />
 
     <item
         android:id="@+id/vulnerabilityMenuItem"
         android:enabled="true"
-        android:icon="@drawable/ic_bug"
+        android:icon="@drawable/ic_threat"
         android:title="@string/vulnerability"
         app:showAsAction="ifRoom|withText" />
 
     <item
         android:id="@+id/resourceMenuItem"
         android:enabled="true"
-        android:icon="@drawable/ic_bug"
+        android:icon="@drawable/ic_threat"
         android:title="@string/resource"
         app:showAsAction="ifRoom|withText" />
 

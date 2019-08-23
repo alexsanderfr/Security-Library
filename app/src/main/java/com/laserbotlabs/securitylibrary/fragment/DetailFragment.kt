@@ -48,7 +48,7 @@ class DetailFragment : Fragment() {
             val position = arguments?.getInt(EXTRA_INT, 0)
             val threat = position?.let { threats?.get(it) }
             if (threat != null) {
-                photo_iv.setImageResource(R.drawable.ic_bug)
+                photo_iv.setImageResource(R.drawable.ic_threat)
                 photo_iv.setColorFilter(
                     ContextCompat.getColor(this.activity!!, threat.imageResource),
                     android.graphics.PorterDuff.Mode.SRC_IN
@@ -68,7 +68,7 @@ class DetailFragment : Fragment() {
             val position = arguments?.getInt(EXTRA_INT, 0)
             val vulnerability = position?.let { vulnerabilities?.get(it) }
             if (vulnerability != null) {
-                photo_iv.setImageResource(R.drawable.ic_bug)
+                photo_iv.setImageResource(R.drawable.ic_vulnerability)
                 photo_iv.setColorFilter(
                     ContextCompat.getColor(this.activity!!, vulnerability.imageResource),
                     android.graphics.PorterDuff.Mode.SRC_IN
@@ -88,7 +88,7 @@ class DetailFragment : Fragment() {
             val position = arguments?.getInt(EXTRA_INT, 0)
             val resource = position?.let { resources?.get(it) }
             if (resource != null) {
-                photo_iv.setImageResource(R.drawable.ic_bug)
+                photo_iv.setImageResource(R.drawable.ic_resource)
                 photo_iv.setColorFilter(
                     ContextCompat.getColor(this.activity!!, resource.imageResource),
                     android.graphics.PorterDuff.Mode.SRC_IN

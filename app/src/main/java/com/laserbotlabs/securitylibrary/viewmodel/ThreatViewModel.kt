@@ -5,9 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.laserbotlabs.securitylibrary.model.Threat
 import com.laserbotlabs.securitylibrary.util.Utils
+import org.json.JSONObject
 
 
-class ThreatViewModel : ViewModel() {
+class ThreatViewModel(private val json:String): ViewModel() {
     private val threats: MutableLiveData<List<Threat>> = MutableLiveData()
 
     init {
@@ -19,13 +20,17 @@ class ThreatViewModel : ViewModel() {
     }
 
     private fun loadThreats() {
+        val jsonObject = JSONObject(json)
+        val threatsJsonArray = jsonObject.getJSONArray("threats")
         val threatsArrayList: ArrayList<Threat> = ArrayList()
-        for (x in 0..10) {
-            val name = "Threat #$x"
-            val description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod " +
-                    "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud " +
-                    "exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-            val threat = Threat(name, description, x % 3 == 0, Utils.getRandomColor())
+        for (i in 0 until threatsJsonArray.length()) {
+            val threatJsonObject = threatsJsonArray.getJSONObject(i)
+            val name = threatJsonObject.getString("name")
+            val description = threatJsonObject.getString("description")
+            val canBeTested = threatJsonObject.getBoolean("canBeTested")
+            val imageResource = threatJsonObject.getInt("imageResource")
+            val threat = Threat(name, description, canBeTested,
+                if (imageResource == -1) Utils.getRandomColor() else imageResource)
             threatsArrayList.add(threat)
         }
         threats.value = threatsArrayList

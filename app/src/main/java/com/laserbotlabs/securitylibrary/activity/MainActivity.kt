@@ -2,7 +2,6 @@ package com.laserbotlabs.securitylibrary.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.core.os.bundleOf
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
@@ -11,6 +10,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.laserbotlabs.securitylibrary.R
 import com.laserbotlabs.securitylibrary.util.Utils
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,16 +20,13 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
 
         val appBarConfiguration = AppBarConfiguration(navController.graph)
-        findViewById<Toolbar>(R.id.toolbar).setupWithNavController(
+        toolbar.setupWithNavController(
             navController,
             appBarConfiguration
         )
 
-
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
         val onNavigationItemSelectedListener =
             BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
-                //TODO: Fix UI not updating
                 when (menuItem.itemId) {
                     R.id.threatMenuItem -> {
                         val bundle = bundleOf(Utils.EXTRA_INT to 0)
@@ -49,10 +46,28 @@ class MainActivity : AppCompatActivity() {
                 }
                 false
             }
-        bottomNavigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+        bottom_nav.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 
         val navOptions = NavOptions.Builder().setPopUpTo(R.id.listFragment, true).build()
         navController.navigate(R.id.listFragment, bundleOf(Utils.EXTRA_INT to 0), navOptions)
 
+    }
+
+    fun updateBottomNavigationViewUi(position: Int) {
+        var itemId = R.id.threatMenuItem
+        when (position) {
+            0 -> {
+                itemId = R.id.threatMenuItem
+            }
+            1 -> {
+                itemId = R.id.vulnerabilityMenuItem
+            }
+            2 -> {
+                itemId = R.id.resourceMenuItem
+            }
+        }
+        val menu = bottom_nav.menu
+        val item = menu.findItem(itemId)
+        item.isChecked = true
     }
 }

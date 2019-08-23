@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.laserbotlabs.securitylibrary.R
+import com.laserbotlabs.securitylibrary.activity.MainActivity
 import com.laserbotlabs.securitylibrary.adapter.ResourcesAdapter
 import com.laserbotlabs.securitylibrary.adapter.ThreatsAdapter
 import com.laserbotlabs.securitylibrary.adapter.VulnerabilitiesAdapter
@@ -38,7 +39,16 @@ class ListFragment : Fragment(){
                 loadResources()
             }
         }
+
         super.onActivityCreated(savedInstanceState)
+    }
+
+    override fun onResume() {
+        val position = arguments?.getInt(Utils.EXTRA_INT, 0)
+        if (position != null) {
+            (activity as MainActivity).updateBottomNavigationViewUi(position)
+        }
+        super.onResume()
     }
 
     override fun onCreateView(

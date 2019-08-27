@@ -29,8 +29,7 @@ class ThreatViewModel(private val json:String): ViewModel() {
             val description = threatJsonObject.getString("description")
             val canBeTested = threatJsonObject.getBoolean("canBeTested")
             val imageResource = threatJsonObject.getInt("imageResource")
-            val threat = Threat(name, description, canBeTested,
-                if (imageResource == -1) Utils.getRandomColor() else imageResource)
+            val threat = Threat(name, description, canBeTested, Utils.getImageResource(imageResource))
             threatsArrayList.add(threat)
         }
         threats.value = threatsArrayList

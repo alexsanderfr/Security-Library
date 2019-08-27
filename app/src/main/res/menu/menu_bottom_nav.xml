@@ -12,14 +12,14 @@
     <item
         android:id="@+id/vulnerabilityMenuItem"
         android:enabled="true"
-        android:icon="@drawable/ic_threat"
+        android:icon="@drawable/ic_vulnerability"
         android:title="@string/vulnerability"
         app:showAsAction="ifRoom|withText" />
 
     <item
         android:id="@+id/resourceMenuItem"
         android:enabled="true"
-        android:icon="@drawable/ic_threat"
+        android:icon="@drawable/ic_resource"
         android:title="@string/resource"
         app:showAsAction="ifRoom|withText" />
 

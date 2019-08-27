@@ -7,19 +7,25 @@ class Utils {
     companion object {
         const val EXTRA_INT = "com.laserbotlabs.securitylibrary.INT"
         const val EXTRA_STRING = "com.laserbotlabs.securitylibrary.STRING"
+        private val colors = arrayOf(
+            R.color.red, R.color.pink, R.color.blue,
+            R.color.green, R.color.orange, R.color.yellow, R.color.purple, R.color.teal
+        )
 
-        fun getRandomColor(): Int {
-            val colors: ArrayList<Int> = ArrayList()
-            colors.add(R.color.red)
-            colors.add(R.color.pink)
-            colors.add(R.color.blue)
-            colors.add(R.color.green)
-            colors.add(R.color.orange)
-            colors.add(R.color.yellow)
-            colors.add(R.color.purple)
-            colors.add(R.color.teal)
+        fun getRandomColor(index: Int): Int {
+
+            if (index != -1) {
+                return colors[index]
+            }
             val randomNumber = Random.nextInt(colors.size)
             return colors[randomNumber]
+        }
+
+        fun getImageResource(imageResource: Int): Int {
+            if (imageResource < colors.size) {
+                return getRandomColor(imageResource)
+            }
+            return imageResource
         }
     }
 }

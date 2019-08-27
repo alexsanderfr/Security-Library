@@ -28,8 +28,7 @@ class ResourceViewModel(private val json:String): ViewModel() {
             val name = resourceJsonObject.getString("name")
             val description = resourceJsonObject.getString("description")
             val imageResource = resourceJsonObject.getInt("imageResource")
-            val resource = Resource(name, description,
-                if (imageResource == -1) Utils.getRandomColor() else imageResource)
+            val resource = Resource(name, description, Utils.getImageResource(imageResource))
             resourcesArrayList.add(resource)
         }
         resources.value = resourcesArrayList

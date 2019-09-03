@@ -1,6 +1,6 @@
 # Security Library
 
-Library of Android vulnerabilities and threats
+Library of Android attacks, vulnerabilities and security resources
 
 ### Prerequisites
 

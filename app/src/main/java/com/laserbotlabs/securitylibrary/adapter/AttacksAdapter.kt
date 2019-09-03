@@ -11,17 +11,17 @@ import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.laserbotlabs.securitylibrary.R
-import com.laserbotlabs.securitylibrary.model.Threat
+import com.laserbotlabs.securitylibrary.model.Attack
 import com.laserbotlabs.securitylibrary.util.Utils.Companion.EXTRA_INT
 import com.laserbotlabs.securitylibrary.util.Utils.Companion.EXTRA_STRING
 import kotlinx.android.synthetic.main.list_item.view.*
 
 
-class ThreatsAdapter(
+class AttacksAdapter(
     private val context: Context,
-    private val threats: List<Threat>
+    private val attacks: List<Attack>
 ) :
-    RecyclerView.Adapter<ThreatsAdapter.ViewHolder>() {
+    RecyclerView.Adapter<AttacksAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -31,20 +31,20 @@ class ThreatsAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val threat: Threat = threats[position]
-        val name = threat.name
+        val attack: Attack = attacks[position]
+        val name = attack.name
         holder.itemTextView.text = name
         holder.itemImageView.contentDescription = name
-        holder.itemImageView.setImageResource(R.drawable.ic_threat)
+        holder.itemImageView.setImageResource(R.drawable.ic_attack)
         holder.itemImageView.setColorFilter(
-            ContextCompat.getColor(context, threat.imageResource),
+            ContextCompat.getColor(context, attack.imageResource),
             android.graphics.PorterDuff.Mode.SRC_IN
         )
-        holder.starImageView.visibility = if (threat.canBeTested) View.VISIBLE else View.GONE
+        holder.starImageView.visibility = if (attack.canBeTested) View.VISIBLE else View.GONE
     }
 
     override fun getItemCount(): Int {
-        return threats.size
+        return attacks.size
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
@@ -58,7 +58,7 @@ class ThreatsAdapter(
 
         override fun onClick(v: View) {
             val adapterPosition = adapterPosition
-            val bundle = bundleOf(EXTRA_INT to adapterPosition, EXTRA_STRING to "threat")
+            val bundle = bundleOf(EXTRA_INT to adapterPosition, EXTRA_STRING to "attack")
             v.findNavController().navigate(R.id.action_listFragment_to_detailFragment, bundle)
         }
     }

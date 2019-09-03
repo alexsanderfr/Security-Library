@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             BottomNavigationView.OnNavigationItemSelectedListener { menuItem ->
                 if (!menuItem.isChecked) {
                     when (menuItem.itemId) {
-                        R.id.threatMenuItem -> {
+                        R.id.attackMenuItem -> {
                             val bundle = bundleOf(Utils.EXTRA_INT to 0)
                             navController.navigate(R.id.listFragment, bundle)
                             return@OnNavigationItemSelectedListener true
@@ -56,10 +56,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun updateBottomNavigationViewUi(position: Int) {
-        var itemId = R.id.threatMenuItem
+        var itemId = R.id.attackMenuItem
         when (position) {
             0 -> {
-                itemId = R.id.threatMenuItem
+                itemId = R.id.attackMenuItem
             }
             1 -> {
                 itemId = R.id.vulnerabilityMenuItem

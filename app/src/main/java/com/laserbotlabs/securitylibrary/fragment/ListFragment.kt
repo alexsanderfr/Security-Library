@@ -10,16 +10,16 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.laserbotlabs.securitylibrary.R
 import com.laserbotlabs.securitylibrary.activity.MainActivity
+import com.laserbotlabs.securitylibrary.adapter.AttacksAdapter
 import com.laserbotlabs.securitylibrary.adapter.ResourcesAdapter
-import com.laserbotlabs.securitylibrary.adapter.ThreatsAdapter
 import com.laserbotlabs.securitylibrary.adapter.VulnerabilitiesAdapter
+import com.laserbotlabs.securitylibrary.model.Attack
 import com.laserbotlabs.securitylibrary.model.Resource
-import com.laserbotlabs.securitylibrary.model.Threat
 import com.laserbotlabs.securitylibrary.model.Vulnerability
 import com.laserbotlabs.securitylibrary.util.Utils
 import com.laserbotlabs.securitylibrary.util.ViewModelFactory
+import com.laserbotlabs.securitylibrary.viewmodel.AttackViewModel
 import com.laserbotlabs.securitylibrary.viewmodel.ResourceViewModel
-import com.laserbotlabs.securitylibrary.viewmodel.ThreatViewModel
 import com.laserbotlabs.securitylibrary.viewmodel.VulnerabilityViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
 
@@ -30,7 +30,7 @@ class ListFragment : Fragment(){
         items_rv.setHasFixedSize(true)
         when(arguments?.getInt(Utils.EXTRA_INT, 0)) {
             0 -> {
-                loadThreats()
+                loadAttacks()
             }
             1 -> {
                 loadVulnerabilities()
@@ -59,11 +59,11 @@ class ListFragment : Fragment(){
         return inflater.inflate(R.layout.fragment_list, container, false)
     }
 
-    private fun loadThreats() {
+    private fun loadAttacks() {
         val text = resources.openRawResource(R.raw.data).bufferedReader().use { it.readText() }
-        val model = ViewModelProviders.of(this, ViewModelFactory(arrayOf(text))).get(ThreatViewModel::class.java)
-        model.getThreats().observe(this, Observer<List<Threat>>{ threats ->
-            items_rv.adapter = ThreatsAdapter(this.activity!!, threats!!)
+        val model = ViewModelProviders.of(this, ViewModelFactory(arrayOf(text))).get(AttackViewModel::class.java)
+        model.getAttacks().observe(this, Observer<List<Attack>>{ attacks ->
+            items_rv.adapter = AttacksAdapter(this.activity!!, attacks!!)
         })
     }
 

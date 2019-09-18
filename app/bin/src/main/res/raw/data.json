@@ -72,12 +72,6 @@
       "description": "Ataques de escalação de privilégios são ataques que utilizam dos privilégios concedidos a eles para rodar código malicioso que use de falhas no sistema para obter privilégios que o usuário não concedeu. Em Android, isso é feito usando das permissões que um aplicativo tem para aumentar a quantidade de permissões, sem o consentimento do usuário.\n\nA forma mais fácil de fazer isso é, novamente, através da exploração de bibliotecas de terceiros. Por dia, informação privada do usuário é vazada 2.4 vezes de apenas um smartphone.\n\nPor conta disso, é muito importante que desenvolvedores façam aplicativos com a mínima quantidade de permissões para rodar o aplicativo, e que usuários mantenham-se atentos antes de conceder à aplicativos permissões que possam ser exploradas por agentes mal intencionados.",
       "canBeTested": false,
       "imageResource": 3
-    },
-    {
-      "name": "Ataques de energia",
-      "description": "Ataques de energia costumam mirar nos recursos do sistema Android tais como memória, processador, disco e bateria para danificar o sistema. Aplicações maliciosas tendem a consumir muito mais recursos que uma aplicação comum. Uma forma de construir um ataque deste tipo é gerar um arquivo preparado para consumir os recursos do aparelho de forma silenciosa, fazendo com que, por exemplo, a bateria de um dispositivo se exauste sem que o usuário perceba. Dessa forma, o sistema inevitavelmente irá chegar no limite, impedindo que o usuário continue sua operação normal.",
-      "canBeTested": false,
-      "imageResource": 4
     }
   ]
 }
